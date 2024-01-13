@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package ecommerce;
+
+option go_package = "./";
+
+service BankAccountTransactionInfo {
+  rpc getBankAccountTransactions(BankAccountId) returns (stream BankAccountTransaction);
+}
+
+message BankAccountTransaction {
+  string id = 1;
+  string name = 2;
+  int64 amount = 3;
+}
+
+message BankAccountId {
+  string value = 1;
+}

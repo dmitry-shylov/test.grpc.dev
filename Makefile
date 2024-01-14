@@ -13,6 +13,12 @@ generate_grpc_bank_account_transaction:
          --go-grpc_out=$(GO_GRPC_OUT) \
          --plugin=protoc-gen-go-grpc=$(PLUGIN)
 
+generate_grpc_order:
+	protoc -I ecommerce ecommerce/order.proto \
+		 --go_out=$(GO_OUT) \
+         --go-grpc_out=$(GO_GRPC_OUT) \
+         --plugin=protoc-gen-go-grpc=$(PLUGIN)
+
 start_grpc_product_info_server:
 	go run cmd/product_info_server.go
 
@@ -24,3 +30,9 @@ start_grpc_bank_account_transaction_server:
 
 start_grpc_bank_account_transaction_client:
 	go run cmd/bank_account_transaction_client.go
+
+start_grpc_order_server:
+	go run cmd/order_server.go
+
+start_grpc_order_client:
+	go run cmd/order_client.go
